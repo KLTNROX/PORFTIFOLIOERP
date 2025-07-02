@@ -235,7 +235,7 @@ nav#indice ul li a span.icon {
   </header>
 
   <!-- Botão de menu (mobile) -->
-  <button id="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+  <button id="menu-toggle" onclick="toggleMenu()">☰</button>
 
   <!-- Menu lateral -->
   <nav id="indice">
@@ -516,6 +516,34 @@ nav#indice ul li a span.icon {
     nav.classList.toggle('open');
     document.body.classList.toggle('menu-open');
   }
+  const menuToggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('indice');
+
+  // Alterna o menu ao clicar no botão ☰
+  function toggleMenu() {
+    menu.classList.toggle('open');
+    document.body.classList.toggle('menu-open');
+  }
+
+  // Fecha o menu ao clicar em qualquer link dentro dele
+  menu.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') {
+      menu.classList.remove('open');
+      document.body.classList.remove('menu-open');
+    }
+  });
+
+  // Fecha o menu ao clicar fora dele
+  document.addEventListener('click', function (e) {
+    const isClickInsideMenu = menu.contains(e.target);
+    const isClickOnToggle = menuToggle.contains(e.target);
+
+    if (!isClickInsideMenu && !isClickOnToggle) {
+      menu.classList.remove('open');
+      document.body.classList.remove('menu-open');
+    }
+  });
+
 </script>
 </body>
 </html>
