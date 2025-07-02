@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfólio – Sistema SOLUÇÃO ERP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 0;
+      background: #f9f9f9;
+      padding-top: 180px; /* Compensa header fixo */
+    }
+
+    /* Cabeçalho fixo */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      padding: 0px 0;
+      text-align: center;
+    }
+
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header-content img {
+      max-width: 180px;
+      height: auto;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+/* cabeçalho "portfolio de funcionalidades" */
+    .header-content h1 {
+      margin: 0;
+      padding: 6px 16px;
+      background-color: #d60000;
+      color: white;
+      border-radius: 4px;
+      font-size: 1.2em;
+    }
+
+    /* Botão de menu (mobile) */
+    #menu-toggle {
+      display: none;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1100;
+      background-color: #1100aa;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      font-size: 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    #menu-toggle:hover {
+      background-color: #880000;
+    }
+
+    /* Menu lateral */
+   nav#indice {
+  position: fixed;
+  top: 180px;
+  left: 0;
+  width: 220px;
+  height: calc(100% - 180px);
+  background: #d60000;
+  border-right: 1px solid #ddd;
+  padding: 20px 15px;
+  overflow-y: auto;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+nav#indice h2 {
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+nav#indice ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav#indice ul li {
+  margin-bottom: 10px;
+}
+
+nav#indice ul li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #000000;
+  font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+nav#indice ul li a:hover {
+  background-color: #eaeaea;
+  color: #000000;
+}
+
+nav#indice ul li a span.icon {
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+}
+
+    /* Conteúdo */
+ 
+
+    .feature {
+      background: #ffffff;
+      margin: 0 0 20px 0;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .feature h3 {
+      color: #d60000;
+    }
+
+    .feature img {
+      width: 100%;
+      max-width: 800px;
+      margin-top: 10px;
+      border-radius: 8px;
+    }
+
+    footer {
+      background: #d60000;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    section {
+  margin-left: 250px; /* igual ou maior que a largura do menu */
+  padding: 0px;
+  
+}
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      nav#indice {
+        left: -270px;
+        transition: left 0.3s ease;
+      }
+
+      nav#indice.open {
+        left: 0;
+      }
+
+      #menu-toggle {
+        display: block;
+      }
+
+      body.menu-open {
+        overflow: hidden;
+      }
+
+      section {
+        margin-left: 0;
+        padding: 20px;
+      }
+    }
+    @media print {
+  header {
+    position: static !important;
+    box-shadow: none;
+  }
+
+  body {
+    padding-top: 0 !important;
+  }
+
+  nav#indice {
+    position: static !important;
+    height: auto !important;
+    box-shadow: none;
+    border: none;
+    margin-bottom: 20px;
+  }
+
+  section {
+    margin-left: 0 !important;
+  }
+
+  #menu-toggle {
+    display: none !important;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <header id="topo">
+    <div class="header-content">
+      <a href="#" onclick="scrollToTop(); return false;">
+        <img src="imagens/LOGO4.png" alt="Logo da Empresa">
+      </a>
+      <h1>Portfólio de Funcionalidades</h1>
+    </div>
+  </header>
+
+  <!-- Botão de menu (mobile) -->
+  <button id="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+
+  <!-- Menu lateral -->
+  <nav id="indice">
+  <h2>📚 Índice de Funcionalidades</h2>
+  <ul>
+    <li><a href="#cadastros"><span class="icon">👥</span> Cadastros</a></li>
+    <li><a href="#busca"><span class="icon">📍</span> Busca de Dados</a></li>
+    <li><a href="#boletos"><span class="icon">💳</span> Emissão de Boletos</a></li>
+    <li><a href="#financeiro"><span class="icon">📊</span> Controle Financeiro</a></li>
+    <li><a href="#creditos"><span class="icon">➕</span> Créditos</a></li>
+    <li><a href="#notas"><span class="icon">🧾</span> Tipos de Notas</a></li>
+    <li><a href="#importacao"><span class="icon">📥</span> Importação de Notas</a></li>
+    <li><a href="#multiplos"><span class="icon">🧾📦</span> Notas Múltiplas</a></li>
+    <li><a href="#estoque"><span class="icon">📦</span> Estoque</a></li>
+    <li><a href="#minimo"><span class="icon">⚠️</span> Estoque Mínimo</a></li>
+    <li><a href="#composto"><span class="icon">🧩</span> Produto Composto</a></li>
+    <li><a href="#tabela"><span class="icon">💲</span> Tabela de Preços</a></li>
+    <li><a href="#consignada"><span class="icon">🤝</span> Venda Consignada</a></li>
+    <li><a href="#futura"><span class="icon">⏳</span> Venda Futura</a></li>
+    <li><a href="#rota"><span class="icon">🚚</span> Rota de Entregas</a></li>
+    <li><a href="#etiquetas"><span class="icon">🏷️</span> Etiquetas</a></li>
+    <li><a href="#aniversariantes"><span class="icon">🎂</span> Aniversariantes</a></li>
+    <li><a href="#executor"><span class="icon">👨‍🔧</span> Executor</a></li>
+    <li><a href="#agendamento"><span class="icon">📅</span> Agendamento</a></li>
+    <li><a href="#contratos"><span class="icon">📄</span> Contratos</a></li>
+    <li><a href="#pontuacao"><span class="icon">⭐</span> Pontuação</a></li>
+    <li><a href="#vendasrel"><span class="icon">📈</span> Relatórios de Vendas</a></li>
+    <li><a href="#publico"><span class="icon">🎯</span> Público-Alvo</a></li>
+  </ul>
+</nav>
+
+
+  <!-- CONTEÚDO -->
+  <section>
+    <h2 style="margin-left: 20px;">🧠 Sistema SOLUÇÃO ERP</h2>
+        <div class="feature" id="cadastros">
+      <h3>👥 Cadastro de Clientes, Fornecedores, Funcionários e Produtos/Serviços</h3>
+
+      <div id="clientes"></div>
+      <ul><li><strong>Cadastro de Clientes</strong></li></ul>
+      <img src="imagens/CLIENTESERP.png" alt="Cadastro de Clientes">
+
+      <div id="fornecedores"></div>
+      <ul><li><strong>Cadastro de Fornecedores</strong></li></ul>
+      <img src="imagens/FORNECEDORERP.png" alt="Cadastro de Fornecedores">
+
+      <div id="funcionarios"></div>
+      <ul><li><strong>Cadastro de Funcionários</strong></li></ul>
+      <img src="imagens/FUNCIONÁRIOERP.png" alt="Cadastro de Funcionários">
+
+      <div id="produtos"></div>
+      <ul><li><strong>Cadastro de Produtos/Serviços</strong></li></ul>
+      <img src="imagens/PRODUTOERP.png" alt="Cadastro de Produtos">
+    </div>
+
+    <div class="feature" id="busca">
+      <h3>📍 Busca de Endereço e Dados Cadastrais</h3>
+
+      <div id="cep"></div>
+      <ul><li><strong>Busca por CEP</strong></li></ul>
+      <img src="imagens/BUSCACEP.gif" alt="Busca por CEP">
+
+      <div id="cpfcnpj"></div>
+      <ul><li><strong>Busca por CPF/CNPJ</strong></li></ul>
+      <img src="imagens/BUSCACPF.gif" alt="Busca por CPF/CNPJ">
+    </div>
+
+    <div class="feature" id="boletos">
+      <h3>💳 Emissão de Boletos</h3>
+      <p>Integração com diversos bancos com envio automático de boletos para:</p>
+      <ul>
+        <li>SICREDI</li>
+        <li>ITAÚ</li>
+        <li>BANCO DO BRASIL</li>
+        <li>SANTANDER</li>
+        <li>CAIXA ECONÔMICA FEDERAL</li>
+        <li>SICOOB</li>
+        <li>BRADESCO</li>
+        <li>SAFRA</li>
+        <li>EFI</li>
+        <li>CRESOL</li>
+        <li>CREDISIS</li>
+      </ul>
+    </div>
+
+    <div class="feature" id="financeiro">
+      <h3>📊 Controle Financeiro Completo</h3>
+
+      <div id="despesas"></div>
+      <ul><li><strong>Despesas com centro de custo/plano de contas</strong></li></ul>
+      <img src="imagens/DESPESA.gif" alt="Despesas">
+
+      <div id="caixa"></div>
+      <ul><li><strong>Controle de caixa</strong></li></ul>
+      <img src="imagens/CAIXA.png" alt="Caixa">
+
+      <div id="receber"></div>
+      <ul><li><strong>A receber</strong></li></ul>
+      <img src="imagens/ARECEBER.png" alt="A receber">
+
+      <div id="pagar"></div>
+      <ul><li><strong>A pagar com agrupamento de parcelas</strong></li></ul>
+      <img src="imagens/APAGAR.png" alt="A pagar">
+
+      <div id="remessa"></div>
+      <ul><li><strong>Remessa bancária</strong></li></ul>
+      <img src="imagens/REMESSA.png" alt="Remessa">
+
+      <div id="retorno"></div>
+      <ul><li><strong>Retorno bancário</strong></li></ul>
+      <img src="imagens/RETORNO.png" alt="Retorno">
+
+      <div id="relatorios"></div>
+      <ul><li><strong>Relatórios financeiros</strong></li></ul>
+      <img src="imagens/FINANCEIRO.png" alt="Financeiro">
+
+      <div id="dre"></div>
+      <ul><li><strong>D.R.E</strong></li></ul>
+      <img src="imagens/DRE.png" alt="DRE">
+    </div>
+
+    <div class="feature" id="creditos">
+      <h3>➕ Lançamento de Créditos</h3>
+      <p>Permite lançar créditos tanto para clientes quanto para fornecedores.</p>
+      <img src="imagens/CREDITO.png" alt="Créditos">
+    </div>
+        <div class="feature" id="notas">
+      <h3>🧾 Tipos de Notas Emitidas</h3>
+      <p>Emissão de NFE, NFCE, MDFE, CTE/CTE-OS e Nota de Importação.</p>
+      <img src="imagens/NOTAS.png" alt="Notas Emitidas">
+    </div>
+
+    <div class="feature" id="importacao">
+      <h3>📥 Importação de Notas de Entrada</h3>
+      <p>Busca automática de notas emitidas para o CNPJ da empresa, com download de XML, geração de compra, manifestação e escrituração.</p>
+      <img src="imagens/NOTASENTRADA.gif" alt="Importação de Notas">
+    </div>
+
+    <div class="feature" id="multiplos">
+      <h3>🧾📦 Geração de Notas para Múltiplos Pedidos</h3>
+      <p>Permite selecionar várias vendas e gerar uma única nota fiscal.</p>
+      <img src="imagens/MULTIPLOSPEDIDOS.png" alt="Notas Múltiplas">
+    </div>
+
+    <div class="feature" id="estoque">
+      <h3>📦 Contagem e Alimentação de Estoque</h3>
+      <ul><li><strong>Contagem de estoque</strong></li></ul>
+      <img src="imagens/CONTAGEM.png" alt="Contagem de Estoque">
+      <ul><li><strong>Compras</strong></li></ul>
+      <img src="imagens/COMPRA.png" alt="Compras">
+      <ul><li><strong>Movimentações</strong></li></ul>
+      <img src="imagens/MOVIMENTAÇÃO.png" alt="Movimentações">
+    </div>
+
+    <div class="feature" id="minimo">
+      <h3>⚠️ Controle de Estoque Mínimo</h3>
+      <p>Alertas de estoque mínimo ao fechar vendas e emissão de relatórios específicos.</p>
+      <img src="imagens/ESTOQUEMINIMO.png" alt="Estoque Mínimo">
+    </div>
+
+    <div class="feature" id="composto">
+      <h3>🧩 Produto Composto e Industrialização</h3>
+      <ul><li><strong>Produto Composto</strong></li></ul>
+      <img src="imagens/PRODUTOCOMPOSTO.gif" alt="Produto Composto">
+      <div id="industrializacao"></div>
+      <ul><li><strong>Industrialização</strong></li></ul>
+      <img src="imagens/INDUSTRIALIZAÇÃO.gif" alt="Industrialização">
+    </div>
+
+    <div class="feature" id="tabela">
+      <h3>💲 Tabela de Preços</h3>
+      <p>Cadastro de múltiplos preços por produto, com seleção conforme necessidade.</p>
+      <img src="imagens/TABELA.png" alt="Tabela de Preços">
+    </div>
+
+    <div class="feature" id="consignada">
+      <h3>📦🤝 Venda Consignada</h3>
+      <p>Controle de consignado por movimentação de produtos (remessa à vender).</p>
+      <img src="imagens/CONSIGNADA.png" alt="Venda Consignada">
+    </div>
+
+    <div class="feature" id="futura">
+      <h3>📦⏳ Venda Futura</h3>
+      <p>Permite realizar baixas parciais de produtos vendidos e emitir NFE por entrega.</p>
+      <img src="imagens/VENDAFUTURA.png" alt="Venda Futura">
+    </div>
+        <div class="feature" id="rota">
+      <h3>🚚 Rota de Entregas</h3>
+      <p>Organização de entregas por região, com definição de veículo, funcionário e impressão de romaneio.</p>
+      <img src="imagens/ROTA.png" alt="Rota de Entregas">
+    </div>
+
+    <div class="feature" id="etiquetas">
+      <h3>🏷️ Etiquetas Personalizadas</h3>
+      <p>Geração e customização de etiquetas conforme a necessidade do cliente.</p>
+      <img src="imagens/ETIQUETAS.png" alt="Etiquetas">
+    </div>
+
+    <div class="feature" id="aniversariantes">
+      <h3>🎂 Controle de Aniversariantes</h3>
+      <p>Relatórios mensais e alertas automáticos ao fazer login no sistema.</p>
+      <img src="imagens/ANIVERSARIANTES2.png" alt="Aniversariantes 2">
+      <img src="imagens/ANIVERSARIANTES.png" alt="Aniversariantes">
+    </div>
+
+    <div class="feature" id="executor">
+      <h3>👨‍🔧 Executor de Serviço</h3>
+      <p>Identificação do funcionário responsável por cada serviço e relatório detalhado por período.</p>
+      <img src="imagens/EXECUTOR.png" alt="Executor">
+      <img src="imagens/EXECUTOR2.png" alt="Executor 2">
+    </div>
+
+    <div class="feature" id="agendamento">
+      <h3>📅 Agendamento de Horários</h3>
+      <p>Controle de agenda por funcionário com grade de horários e agendamento de clientes.</p>
+      <img src="imagens/AGENDAMENTO.png" alt="Agendamento">
+    </div>
+
+    <div class="feature" id="contratos">
+      <h3>📄 Contratos e Mensalidades</h3>
+      <p>Geração de contratos e parcelas mensais automáticas para clientes.</p>
+      <img src="imagens/CONTRATO.png" alt="Contrato">
+      <img src="imagens/GERARPARCELA.png" alt="Parcelas">
+    </div>
+
+    <div class="feature" id="pontuacao">
+      <h3>⭐ Pontuação de Clientes</h3>
+      <p>Configuração de pontos por produto para fidelização de clientes.</p>
+    </div>
+
+    <div class="feature" id="vendasrel">
+      <h3>📈 Relatórios de Vendas e Margem de Lucro</h3>
+      <ul>
+        <li><strong>Por período</strong></li>
+        <img src="imagens/VENDASPERIODO.png" alt="Vendas por Período">
+        <li><strong>Vendas e margem de lucro</strong></li>
+        <img src="imagens/MARGEMELUCRO.png" alt="Margem de Lucro">
+        <li><strong>Produtos vendidos</strong></li>
+        <img src="imagens/PRODUTOSVENDIDOS.png" alt="Produtos Vendidos">
+        <li><strong>Produtos mais vendidos</strong></li>
+        <img src="imagens/PRODUTOSMAISVENDIDOS.png" alt="Mais Vendidos">
+        <li><strong>Curva ABC</strong></li>
+        <img src="imagens/CURVABC.png" alt="Curva ABC">
+        <li><strong>Vendas por funcionário</strong></li>
+        <img src="imagens/VENDAFUNCIONARIO.png" alt="Vendas por Funcionário">
+        <li><strong>Produtos sem movimentação</strong></li>
+        <img src="imagens/SEMMOVIMENTACAO.png" alt="Sem Movimentação">
+        <li><strong>Análise do cliente (últimas 3 compras)</strong></li>
+        <img src="imagens/ANALISECLIENTE.png" alt="Análise do Cliente">
+      </ul>
+    </div>
+
+    <div class="feature" id="publico">
+      <h3>🎯 Público-Alvo</h3>
+      <p>O sistema SOLUÇÃO ERP é voltado para empresários mais exigentes que necessitam de maior controle e gestão do seu negócio e que não abrem mão de agilidade e eficiência.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 SOLUÇÃO ERP e FISCAL FÁCIL – Todos os direitos reservados.</p>
+  </footer>
+<script>
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  window.addEventListener('load', () => {
+    const header = document.querySelector('header');
+    const nav = document.getElementById('indice');
+    if (header && nav) {
+      const headerHeight = header.offsetHeight;
+      nav.style.top = headerHeight + 'px';
+      nav.style.height = `calc(100% - ${headerHeight}px)`;
+    }
+  });
+
+</script>
+</body>
+</html>
