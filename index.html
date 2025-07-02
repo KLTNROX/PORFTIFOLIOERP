@@ -54,20 +54,20 @@
 
     /* Botão de menu (mobile) */
     #menu-toggle {
-      display: none;
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 1100;
-      background-color: #1100aa;
-      color: white;
-      border: none;
-      padding: 10px 14px;
-      font-size: 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1100;
+  background-color: #aa0000;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  font-size: 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
 
     #menu-toggle:hover {
       background-color: #880000;
@@ -509,7 +509,12 @@ nav#indice ul li a span.icon {
       nav.style.height = `calc(100% - ${headerHeight}px)`;
     }
   });
-
+  
+  function toggleMenu() {
+    const nav = document.getElementById('indice');
+    nav.classList.toggle('open');
+    document.body.classList.toggle('menu-open');
+  }
 </script>
 </body>
 </html>
