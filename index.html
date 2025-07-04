@@ -11,6 +11,7 @@
   <style>
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 180px;
     }
 
     body {
@@ -166,6 +167,19 @@ nav#indice ul li a span.icon {
       padding: 20px;
       margin-top: 40px;
     }
+.titulo-sistema {
+  margin-left: 20px;
+  color: #a70808;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.titulo-sistema i {
+  font-size: 28px;
+  vertical-align: middle;
+}
 
     section {
   margin-left: 250px; /* igual ou maior que a largura do menu */
@@ -232,12 +246,13 @@ html {
   color: #a70808;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-
-  </style>
+.titulo-sistema i {
+  font-size: 28px;
+  vertical-align: middle;
+}
+</style>
 </head>
 <body>
-
   <!-- Cabeçalho -->
   <header id="topo">
     <div class="header-content">
@@ -253,7 +268,7 @@ html {
 
   <!-- Menu lateral -->
   <nav id="indice">
-  <h2><i class="fa-solid fa-list"></i> Recursos Disponíveis</h2>
+  <h2><i class="fa-solid fa-list-check"></i> Recursos Disponíveis</h2>
   <ul>
     <li><a href="#cadastros"><span class="icon"><i class="fa-solid fa-pen-to-square"></i></span> Cadastros</a></li>
     <li><a href="#busca"><span class="icon"><i class="fa-solid fa-magnifying-glass-chart"></i></span> Busca de Dados</a></li>
@@ -281,8 +296,6 @@ html {
     <li><a href="#publico"><span class="icon"><i class="fa-solid fa-users-viewfinder"></i></span> Público-Alvo</a></li>
   </ul>
 </nav>
-
-
   <!-- CONTEÚDO -->
   <section>
     <h2 class="titulo-sistema"><i class="fa-solid fa-brain"></i> Sistema SOLUÇÃO E.R.P</h2>
