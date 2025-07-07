@@ -102,6 +102,8 @@
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
   z-index: 1000;
   font-family: 'Segoe UI', sans-serif;
+  border-radius: 0 12px 12px 0;
+   
 }
 
 nav#indice h2 {
@@ -278,7 +280,7 @@ html {
       border-radius: 6px;
       cursor: pointer;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
     }
@@ -290,14 +292,50 @@ html {
     /* Card ERP */
     .erp-wrapper {
       position: fixed;
-      top: 193px;
+      top: 192px;
       right: 0;
       z-index: 1000;
       transition: right 0.3s ease;
     }
 
     .erp-wrapper.collapsed {
-      right: -320px;
+      right: 0;
+    }
+    @media (max-width: 768px) {
+  .erp-wrapper {
+    right: -320px;
+  }
+  .erp-wrapper.open {
+    right: 0;
+  }
+
+  erp-wrapper.collapsed {
+    right: 0;
+  }
+
+}
+
+    @media (max-width: 768px) {
+  #erp-toggle {
+    display: flex;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1100;
+    background-color: #a70808;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    font-size: 20px;
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
     }
 
     .erp-card {
@@ -396,6 +434,27 @@ html {
 .ERP:hover {
   background-color: #9a1a1a;
 }
+.price {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 8px 0 16px;
+}
+
+.erp-title {
+  display: block;
+  background-color: #ee0c0c;
+  color: white;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.erp-title:hover {
+  background-color: #c40b0b;
+}
 
 
 
@@ -411,10 +470,13 @@ html {
       <h1>Portfólio de Funcionalidades</h1>
     </div>
   </header>
-  
-<button id="erp-toggle" onclick="toggleERP()">
+  <!-- Botão de card (mobile) -->
+<button id="erp-toggle">
   <i class="fa-solid fa-dollar-sign"></i>
 </button>
+
+
+
 
   <!-- Botão de menu (mobile) -->
   <button id="menu-toggle" onclick="toggleMenu()">☰</button>
@@ -681,35 +743,46 @@ html {
     </div>
   </section>
 </div>
-<div class="erp-wrapper collapsed">
-    <aside class="erp-card">
-      <a class="ERP" href="https://www.sucessonaempresa.com/">SOLUÇÃO ERP</a>
-      <p>A partir de</p>
-      <p class="price">R$ 219,00 por mês</p>
-      <a class="cta" href="https://wa.me/556740427490?text=Olá!%20Tenho%20interesse%20na%20Solução%20ERP." target="_blank">
-  Contrate já!
-</a>
+<div class="erp-wrapper">
+  <aside class="erp-card">
+    <a class="ERP" href="https://www.sucessonaempresa.com/blog/categories/solu%C3%A7%C3%A3o-e-r-p" target="_blank">SOLUÇÃO ERP</a>
+    <p>A partir de</p>
+    <p class="price">R$ 219,00 por mês</p>
+    <a class="cta" href="https://wa.me/556740427490?text=Olá!%20Tenho%20interesse%20na%20Solução%20ERP." target="_blank">
+      Contrate já!
+    </a>
+    <ul>
+      <li>Zero implantação e sem fidelidade</li>
+      <li>Pesquisa CNPJ e CPF</li>
+      <li>Sistema em nuvem</li>
+      <li>Múltiplas empresas</li>
+      <li>Aplicativo para celular</li>
+      <li>Arquivo SPED Fiscal</li>
+      <li>Suporte personalizado</li>
+    </ul>
+  </aside>
+</div>
 
-      <ul>
-        <li>Zero implantação e sem fidelidade</li>
-        <li>Pesquisa CNPJ e CPF</li>
-        <li>Sistema em nuvem</li>
-        <li>Múltiplas empresas</li>
-        <li>Aplicativo para celular</li>
-        <li>Arquivo SPED Fiscal</li>
-        <li>Suporte personalizado</li>
-      </ul>
-    </aside>
-  </div>
+
 
   <footer>
     <p>© 2025 SOLUÇÃO SISTEMAS – Todos os direitos reservados.</p>
   </footer>
 <script>
+    
+
+  function toggleMenu() {
+  const menu = document.getElementById('indice');
+  menu.classList.toggle('open');
+  document.body.classList.toggle('menu-open');
+}
+
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
   window.addEventListener('load', () => {
+    // Ajusta o topo do menu lateral com base na altura do header
     const header = document.querySelector('header');
     const nav = document.getElementById('indice');
     if (header && nav) {
@@ -717,51 +790,72 @@ html {
       nav.style.top = headerHeight + 'px';
       nav.style.height = `calc(100% - ${headerHeight}px)`;
     }
-  });
-  
-  function toggleMenu() {
-    const nav = document.getElementById('indice');
-    nav.classList.toggle('open');
-    document.body.classList.toggle('menu-open');
-  }
-  const menuToggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('indice');
 
-  // Alterna o menu ao clicar no botão ☰
-  function toggleMenu() {
-    menu.classList.toggle('open');
-    document.body.classList.toggle('menu-open');
-  }
+    // Fecha o menu ao clicar em um link
+    const menu = document.getElementById('indice');
+    const menuToggle = document.getElementById('menu-toggle');
 
-  // Fecha o menu ao clicar em qualquer link dentro dele
-  menu.addEventListener('click', function (e) {
-    if (e.target.tagName === 'A') {
-      menu.classList.remove('open');
-      document.body.classList.remove('menu-open');
+    menu.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        menu.classList.remove('open');
+        document.body.classList.remove('menu-open');
+      }
+    });
+
+    // Fecha o menu ao clicar fora
+    document.addEventListener('click', function (e) {
+      const isClickInsideMenu = menu.contains(e.target);
+      const isClickOnToggle = menuToggle.contains(e.target);
+
+      if (!isClickInsideMenu && !isClickOnToggle) {
+        menu.classList.remove('open');
+        document.body.classList.remove('menu-open');
+      }
+    });
+
+    // ERP toggle
+    const erpWrapper = document.querySelector('.erp-wrapper');
+    const erpToggle = document.getElementById('erp-toggle');
+    const erpIcon = erpToggle.querySelector('i');
+
+    function toggleERP() {
+      erpWrapper.classList.toggle('open');
+
+      // Troca o ícone
+      if (erpWrapper.classList.contains('open')) {
+        erpIcon.classList.remove('fa-dollar-sign');
+        erpIcon.classList.add('fa-xmark');
+      } else {
+        erpIcon.classList.remove('fa-xmark');
+        erpIcon.classList.add('fa-dollar-sign');
+      }
     }
-  });
 
-  // Fecha o menu ao clicar fora dele
-  document.addEventListener('click', function (e) {
-    const isClickInsideMenu = menu.contains(e.target);
-    const isClickOnToggle = menuToggle.contains(e.target);
+    // Atribui a função ao botão
+    erpToggle.addEventListener('click', function (e) {
+      e.stopPropagation(); // Impede que o clique feche imediatamente
+      toggleERP();
+    });
 
-    if (!isClickInsideMenu && !isClickOnToggle) {
-      menu.classList.remove('open');
-      document.body.classList.remove('menu-open');
-    }
-  });
-  window.addEventListener('load', () => {
+    // Fecha o card ERP ao clicar fora
+    document.addEventListener('click', function (e) {
+      if (window.innerWidth <= 768) {
+        const isClickInsideCard = erpWrapper.contains(e.target);
+        const isClickOnButton = erpToggle.contains(e.target);
+
+        if (!isClickInsideCard && !isClickOnButton && erpWrapper.classList.contains('open')) {
+          erpWrapper.classList.remove('open');
+          erpIcon.classList.remove('fa-xmark');
+          erpIcon.classList.add('fa-dollar-sign');
+        }
+      }
+    });
+
+    // Garante que a página comece no topo
     window.scrollTo(0, 0);
   });
-  function toggleERP() {
-    const wrapper = document.querySelector('.erp-wrapper');
-    wrapper.classList.toggle('collapsed');
-  }
-  function toggleERP() {
-    const wrapper = document.querySelector('.erp-wrapper');
-    wrapper.classList.toggle('collapsed');
-  }
+
+
 
 
 
