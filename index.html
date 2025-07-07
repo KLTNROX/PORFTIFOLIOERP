@@ -365,6 +365,7 @@ html {
   right: -280px; /* Esconde o card, mas deixa o botão visível */
 }
 #erp-toggle {
+  display: none;
   position: fixed;
   top: 20px; /* mesmo valor do botão de menu */
   right: 20px; /* alinhado à direita */
@@ -387,6 +388,7 @@ html {
 </style>
 </head>
 <body>
+  <button class="erp-toggle" onclick="toggleERP()"><i class="fa-solid fa-dollar-sign"></i></button>
   <!-- Cabeçalho -->
   <header id="topo">
     <div class="header-content">
@@ -662,8 +664,8 @@ html {
       <p><strong>O sistema SOLUÇÃO ERP é voltado para empresários mais exigentes que necessitam de maior controle e gestão do seu negócio e que não abrem mão de agilidade e eficiência.</strong></p>
     </div>
   </section>
-  <div class="erp-wrapper">
-  <button class="erp-toggle" onclick="toggleERP()"><i class="fa-solid fa-dollar-sign"></i></button>
+  <div class="erp-wrapper collapsed">
+  
   <aside class="erp-card" id="erpCard">
     <h1>SOLUÇÃO ERP</h1>
     <p>A partir de</p>
@@ -744,6 +746,10 @@ html {
     wrapper.classList.toggle('collapsed');
   }
 
+function toggleERP() {
+    const wrapper = document.querySelector('.erp-wrapper');
+    wrapper.classList.toggle('collapsed');
+  }
 
 
 
