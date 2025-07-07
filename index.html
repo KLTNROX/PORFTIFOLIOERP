@@ -9,6 +9,76 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
 />
   <style>
+    .layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+}
+
+.erp-card {
+  position: fixed;
+  top: 192px; /* Alinha com o topo do menu */
+  right: 0px; /* Distância da borda direita */
+  width: 250px;
+  background-color: #a70808;
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+
+}
+
+.erp-card h1 {
+  background-color: #ee0c0c;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 26px;
+  font-weight: bold;
+  margin: 10px 0 20px;
+}
+
+.cta {
+  background-color: #ee0c0c;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  margin: 20px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cta:hover {
+  background-color: #9a1a1a;
+}
+
+.erp-card ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.erp-card ul li {
+  margin: 10px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.erp-card ul li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  color: #4caf50;
+  font-weight: bold;
+}
     html {
       scroll-behavior: smooth;
       scroll-padding-top: 180px;
@@ -253,6 +323,67 @@ html {
   font-size: 28px;
   vertical-align: middle;
 }
+.erp-wrapper {
+  position: fixed;
+  top: 193px;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  transition: right 0.3s ease;
+}
+
+.erp-card {
+  width: 250px;
+  background-color: #a70808;
+  color: white;
+  padding: 20px;
+  border-radius: 12px 0 0 12px;
+  text-align: center;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.erp-toggle {
+  background-color: #a70808;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 6px 0 0 6px;
+  font-size: 18px;
+  height: 40px;
+  margin-top: 10px;
+  transition: background 0.3s ease;
+}
+
+.erp-toggle:hover {
+  background-color: #8a0606;
+}
+
+.erp-wrapper.collapsed {
+  right: -280px; /* Esconde o card, mas deixa o botão visível */
+}
+#erp-toggle {
+  position: fixed;
+  top: 20px; /* mesmo valor do botão de menu */
+  right: 20px; /* alinhado à direita */
+  z-index: 1100;
+  background-color: #a70808;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  font-size: 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+#erp-toggle:hover {
+  background-color: #8a0606;
+}
+
+
 </style>
 </head>
 <body>
@@ -265,6 +396,7 @@ html {
       <h1>Portfólio de Funcionalidades</h1>
     </div>
   </header>
+  
 
   <!-- Botão de menu (mobile) -->
   <button id="menu-toggle" onclick="toggleMenu()">☰</button>
@@ -300,6 +432,7 @@ html {
   </ul>
 </nav>
   <!-- CONTEÚDO -->
+  <div class="layout">
   <section>
     <h2 class="titulo-sistema"><i class="fa-solid fa-brain"></i> Sistema SOLUÇÃO E.R.P</h2>
         <div class="feature" id="cadastros">
@@ -529,6 +662,26 @@ html {
       <p><strong>O sistema SOLUÇÃO ERP é voltado para empresários mais exigentes que necessitam de maior controle e gestão do seu negócio e que não abrem mão de agilidade e eficiência.</strong></p>
     </div>
   </section>
+  <div class="erp-wrapper">
+  <button class="erp-toggle" onclick="toggleERP()"><i class="fa-solid fa-dollar-sign"></i></button>
+  <aside class="erp-card" id="erpCard">
+    <h1>SOLUÇÃO ERP</h1>
+    <p>A partir de</p>
+    <p class="price">R$ 219,00 por mês</p>
+    <div class="cta">Contrate já!</div>
+    <ul>
+      <li>Zero implantação e sem fidelidade</li>
+      <li>Pesquisa CNPJ e CPF</li>
+      <li>Sistema em nuvem</li>
+      <li>Múltiplas empresas</li>
+      <li>Aplicativo para celular</li>
+      <li>Arquivo SPED Fiscal</li>
+      <li>Suporte personalizado</li>
+    </ul>
+  </aside>
+</div>
+</div>
+
 
   <footer>
     <p>© 2025 SOLUÇÃO SISTEMAS – Todos os direitos reservados.</p>
@@ -582,6 +735,16 @@ html {
   window.addEventListener('load', () => {
     window.scrollTo(0, 0);
   });
+  function toggleERP() {
+    const wrapper = document.querySelector('.erp-wrapper');
+    wrapper.classList.toggle('collapsed');
+  }
+  function toggleERP() {
+    const wrapper = document.querySelector('.erp-wrapper');
+    wrapper.classList.toggle('collapsed');
+  }
+
+
 
 
 </script>
