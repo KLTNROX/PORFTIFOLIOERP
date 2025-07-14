@@ -166,7 +166,7 @@ nav#indice ul li a span.icon {
       color: #a70808;
     }
 
-    .feature img {
+    .feature img:not(.imagem-app) {
       width: 100%;
       max-width: 800px;
       margin-top: 10px;
@@ -491,6 +491,14 @@ html {
 .erp-title:hover {
   background-color: #c40b0b;
 }
+.imagem-app {
+  max-width: 300px;      /* controla o tamanho máximo */
+  width: 100%;           /* ajusta ao container */
+  height: auto;          /* mantém proporção */
+  margin-top: 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
 
 
 
@@ -530,6 +538,7 @@ html {
     <li><a href="#importacao"><span class="icon"><i class="fa-solid fa-file-arrow-down"></i></span> Importação de Notas</a></li>
     <li><a href="#multiplos"><span class="icon"><i class="fa-solid fa-layer-group"></i></span> Notas Múltiplas</a></li>
     <li><a href="#arquivos"><i class="fa-solid fa-paper-plane"></i></span> Envio de arquivos</a></li>
+    <li><a href="#app"><i class="fa-solid fa-mobile-screen-button"></i></span> Acesso pelo celular</a></li>
     <li><a href="#estoque"><span class="icon"><i class="fa-solid fa-boxes-stacked"></i></span> Estoque</a></li>
     <li><a href="#minimo"><span class="icon"><i class="fa-solid fa-triangle-exclamation"></i></span> Estoque Mínimo</a></li>
     <li><a href="#composto"><span class="icon"><i class="fa-solid fa-shapes"></i></span> Produto Composto</a></li>
@@ -664,6 +673,11 @@ html {
       <h3><i class="fa-solid fa-paper-plane"></i> Envio de arquivos:</h3>
       <p>Envio de arquivos por Whatsapp ou por E-mail.</p>
       <img src="imagens/arquivos.gif" alt="arquivos">
+    </div>
+    <div class="feature" id="app">
+      <h3><i class="fa-solid fa-mobile-screen-button"></i> Acesso pelo celular</h3>
+      <p>Acesso ao sistema via App Android ou IOS.</p>
+      <img src="imagens/app.png" alt="app" class="imagem-app"/>
     </div>
 
     <div class="feature" id="estoque">
